@@ -1,0 +1,6 @@
+auto-save-list/
+elpa/*
+!elpa/linum.el
+ac-comphist.dat
+ido.last
+bookmarks
