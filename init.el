@@ -76,28 +76,24 @@
 ;; Indent
 (defun tab-to-tab ()
   (interactive)
-  (local-set-key (kbd "TAB") 'self-insert-command))
+  (global-set-key (kbd "TAB") 'self-insert-command))
 (defun tab-to-space ()
   (interactive)
-  (local-set-key (kbd "TAB") 'indent-for-tab-command))
+  (global-set-key (kbd "TAB") 'indent-for-tab-command))
+(defun set-tab-width (width)
+  (interactive "nEnter tab width: ")
+  (setq-default tab-width width
+                standard-indent width
+                lisp-body-indent width
+                c-basic-offset width
+                js-indent-level width
+                css-indent-offset width)
+  (add-hook 'php-mode-hook
+            (lambda ()
+              (setq c-basic-offset width))))
 (setq-default indent-tabs-mode nil
-              tab-width 2
-              standard-indent 2
-              lisp-body-indent 2)
-
-(add-hook 'php-mode-hook
-          (lambda ()
-            (setq c-basic-offset 2)))
-(add-hook 'js-mode-hook
-          (lambda ()
-            (setq js-indent-level 2)))
-(add-hook 'css-mode-hook
-          (lambda ()
-            (setq css-indent-offset 2)))
-(add-hook 'html-mode-hook
-          (lambda ()
-            (set (make-local-variable 'sgml-basic-offset) 2)
-            (setq indent-line-function 'indent-relative)))
+              tab-always-indent nil)
+(set-tab-width 2)
 
 ;; Whitespace
 (setq whitespace-display-mappings
