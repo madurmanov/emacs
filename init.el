@@ -7,6 +7,13 @@
 (setq auto-save-list-file-name nil)
 (setq auto-save-default nil)
 
+;; Remember open buffers
+(desktop-save-mode t)
+
+;; Save point position
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
 ;; Work as a server
 (require 'server)
 (unless (server-running-p)
