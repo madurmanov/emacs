@@ -7,7 +7,7 @@
 (setq auto-save-list-file-name nil)
 (setq auto-save-default nil)
 
-;; Remember open buffers
+;; Save open buffers
 (desktop-save-mode t)
 
 ;; Save point position
@@ -23,6 +23,7 @@
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 (setq package-list '(auto-complete
+                     clean-aindent-mode
                      evil
                      indent-guide
                      jade-mode
@@ -79,7 +80,7 @@
 
 ;; Electric mode
 (electric-pair-mode 1)
-(electric-indent-mode 1)
+(electric-indent-mode -1)
 
 ;; Delete selection
 (delete-selection-mode t)
@@ -94,17 +95,22 @@
 (defun set-tab-width (width)
   (interactive "nEnter tab width: ")
   (setq-default tab-width width
+                my-tab-width width
                 standard-indent width
                 lisp-body-indent width
                 c-basic-offset width
                 js-indent-level width
-                css-indent-offset width))
+                css-indent-offset width)
+  (setq c-basic-offset width))
 (setq-default indent-tabs-mode nil
               tab-always-indent nil)
+(defvar my-tab-width 2)
+(set-tab-width my-tab-width)
+(clean-aindent-mode t)
+(setq clean-aindent-is-simple-indent t)
 (add-hook 'php-mode-hook
           (lambda ()
-            (setq c-basic-offset 2)))
-(set-tab-width 2)
+            (setq c-basic-offset my-tab-width)))
 
 ;; Whitespace
 (setq whitespace-display-mappings
