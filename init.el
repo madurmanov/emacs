@@ -91,12 +91,12 @@
                 lisp-body-indent width
                 c-basic-offset width
                 js-indent-level width
-                css-indent-offset width)
-  (add-hook 'php-mode-hook
-            (lambda ()
-              (setq c-basic-offset width))))
+                css-indent-offset width))
 (setq-default indent-tabs-mode nil
               tab-always-indent nil)
+(add-hook 'php-mode-hook
+          (lambda ()
+            (setq c-basic-offset 2)))
 (set-tab-width 2)
 
 ;; Whitespace
