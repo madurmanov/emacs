@@ -15,16 +15,19 @@
 ;; Packages
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
-(setq package-list '(evil
-                     php-mode
+(setq package-list '(auto-complete
+                     evil
+                     indent-guide
                      jade-mode
-                     scss-mode
-                     projectile
-                     auto-complete
-                     sr-speedbar
-                     yasnippet
                      key-chord
-                     indent-guide))
+                     php-mode
+                     projectile
+                     rainbow-delimiters
+                     scss-mode
+                     smex
+                     sr-speedbar
+                     web-mode
+                     yasnippet))
 (unless package-archive-contents
   (package-refresh-contents))
 (dolist (package package-list)
@@ -172,6 +175,7 @@
 
 ;; Key bindings
 (global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-M-h") 'windmove-left)
 (global-set-key (kbd "C-M-j") 'windmove-down)
 (global-set-key (kbd "C-M-k") 'windmove-up)
