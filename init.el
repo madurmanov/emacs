@@ -25,9 +25,11 @@
 (setq package-list '(auto-complete
                      clean-aindent-mode
                      evil
+                     highlight-parentheses
                      indent-guide
                      jade-mode
                      key-chord
+                     paredit
                      php-mode
                      projectile
                      rainbow-delimiters
@@ -75,11 +77,8 @@
 ;; Short messages
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Paren mode
-(show-paren-mode t)
-
 ;; Electric mode
-(electric-pair-mode 1)
+(electric-pair-mode -1)
 (electric-indent-mode -1)
 
 ;; Delete selection
@@ -111,6 +110,18 @@
 (add-hook 'php-mode-hook
           (lambda ()
             (setq c-basic-offset my-tab-width)))
+
+;; Paredit
+(add-hook 'after-init-hook
+          (lambda ()
+            (paredit-mode t)))
+
+;; Hightlight parentheses
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
 
 ;; Whitespace
 (setq whitespace-display-mappings
