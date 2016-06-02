@@ -23,7 +23,8 @@
                      auto-complete
                      sr-speedbar
                      yasnippet
-                     key-chord))
+                     key-chord
+                     indent-guide))
 (unless package-archive-contents
   (package-refresh-contents))
 (dolist (package package-list)
@@ -182,6 +183,11 @@
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.5)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+
+;; Indent guide
+(indent-guide-global-mode)
+(setq indent-guide-recursive t)
+(global-set-key (kbd "M-q") 'indent-guide-global-mode)
 
 (custom-set-faces
  '(custom-face-tag ((t (:foreground "blue"))))
