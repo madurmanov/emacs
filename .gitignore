@@ -4,3 +4,5 @@ elpa/*
 ac-comphist.dat
 ido.last
 bookmarks
+.emacs.desktop
+.emacs.desktop.lock
