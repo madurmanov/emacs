@@ -24,6 +24,7 @@
 (package-initialize)
 (setq package-list '(auto-complete
                      clean-aindent-mode
+                     editorconfig
                      evil
                      highlight-parentheses
                      indent-guide
@@ -109,6 +110,9 @@
 (add-hook 'php-mode-hook
           (lambda ()
             (setq c-basic-offset my-tab-width)))
+
+;; Editorconfig
+(editorconfig-mode 1)
 
 ;; Hightlight parentheses
 (define-globalized-minor-mode global-highlight-parentheses-mode
