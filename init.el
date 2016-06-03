@@ -29,7 +29,6 @@
                      indent-guide
                      jade-mode
                      key-chord
-                     paredit
                      php-mode
                      projectile
                      rainbow-delimiters
@@ -78,7 +77,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Electric mode
-(electric-pair-mode -1)
+(electric-pair-mode 1)
 (electric-indent-mode -1)
 
 ;; Delete selection
@@ -110,18 +109,6 @@
 (add-hook 'php-mode-hook
           (lambda ()
             (setq c-basic-offset my-tab-width)))
-
-;; Paredit
-(add-hook 'php-mode-hook 'paredit-mode)
-(add-hook 'js-mode-hook 'paredit-mode)
-(add-hook 'css-mode-hook 'paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(add-hook 'lisp-mode-hook 'paredit-mode)
-(add-hook 'web-mode-hook 'paredit-mode)
-(add-hook 'jade-mode-hook 'paredit-mode)
-(add-hook 'scss-mode-hook 'paredit-mode)
-(global-set-key (kbd "{") 'paredit-open-curly)
-(global-set-key (kbd "}") 'paredit-close-curly-and-newline)
 
 ;; Hightlight parentheses
 (define-globalized-minor-mode global-highlight-parentheses-mode
