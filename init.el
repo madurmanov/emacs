@@ -222,7 +222,7 @@
 ;; Indent guide
 (indent-guide-global-mode)
 (setq indent-guide-recursive t)
-(global-set-key (kbd "M-q") 'indent-guide-global-mode)
+(global-set-key (kbd "M-§") 'indent-guide-global-mode)
 
 ;; Rainbow delimiters
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
