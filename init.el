@@ -170,8 +170,8 @@
 
 ;; Auto complete
 (ac-config-default)
-(setq ac-auto-show-menu 1)
-(setq ac-delay 1)
+(setq ac-auto-show-menu .2)
+(setq ac-delay .2)
 (setq ac-auto-start t)
 (add-to-list 'ac-dictionary-directories (concat user-emacs-directory "elpa/auto-complete/dict/"))
 
