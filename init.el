@@ -43,7 +43,7 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
-(add-to-list 'load-path "~/.emacs.d/elpa/")
+(add-to-list 'load-path (concat user-emacs-directory "elpa/"))
 
 ;; Associate files extension
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -173,7 +173,7 @@
 (setq ac-auto-show-menu 1)
 (setq ac-delay 1)
 (setq ac-auto-start t)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d./elpa/auto-complete/dict/")
+(add-to-list 'ac-dictionary-directories (concat user-emacs-directory "elpa/auto-complete/dict/"))
 
 ;; Speedbar
 (setq speedbar-directory-unshown-regexp "^\\(\\.\\.*$\\)\\'")
