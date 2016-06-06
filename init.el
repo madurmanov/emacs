@@ -149,6 +149,9 @@
 (global-linum-mode t)
 (global-set-key (kbd "M-6") 'linum-mode)
 
+;; Highlight current line
+(global-hl-line-mode)
+
 ;; Ido
 (ido-mode t)
 (icomplete-mode t)
@@ -228,6 +231,7 @@
  '(font-lock-function-name-face ((t (:foreground "blue"))))
  '(font-lock-keyword-face ((t (:foreground "cyan"))))
  '(font-lock-string-face ((t (:foreground "red"))))
+ '(hl-line ((t (:background "white"))))
  '(isearch ((t (:background "magenta" :foreground "lightgray"))))
  '(lazy-highlight ((t (:background "green" :foreground "lightgray"))))
  '(linum ((t (:inherit (shadow default) :background "brightwhite"))))
