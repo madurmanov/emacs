@@ -205,8 +205,6 @@
 (global-set-key (kbd "C-M-j") 'windmove-down)
 (global-set-key (kbd "C-M-k") 'windmove-up)
 (global-set-key (kbd "C-M-l") 'windmove-right)
-(define-key evil-normal-state-map (kbd "M-h") 'evil-first-non-blank)
-(define-key evil-normal-state-map (kbd "M-l") 'evil-end-of-line)
 
 ;; Key-chord
 (key-chord-mode 1)
@@ -214,8 +212,6 @@
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 ;; Indent guide
-(indent-guide-global-mode)
-(setq indent-guide-recursive t)
 (global-set-key (kbd "M-§") 'indent-guide-global-mode)
 
 ;; Rainbow delimiters
