@@ -135,6 +135,7 @@
   (mapcar 'purecopy
           '((css-mode "{" "}" nil nil))))
 (add-hook 'css-mode-hook (lambda () (hs-minor-mode 1)))
+(global-set-key (kbd "M-7") 'hs-minor-mode)
 (global-set-key (kbd "M-[") 'hs-toggle-hiding)
 (global-set-key (kbd "M-]") 'hs-show-all)
 
