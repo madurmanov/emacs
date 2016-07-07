@@ -3,6 +3,6 @@ elpa/*
 !elpa/linum.el
 ac-comphist.dat
 ido.last
-bookmarks
+.emacs.bookmarks
 .emacs.desktop
 .emacs.desktop.lock

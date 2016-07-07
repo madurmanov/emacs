@@ -8,11 +8,10 @@
 (setq auto-save-default nil)
 
 ;; Save open buffers
-(desktop-save-mode t)
-
-;; Save point position
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+(setq desktop-dirname "./"
+      desktop-path (list desktop-dirname)
+      desktop-load-locked-desktop nil)
+(desktop-save-mode 1)
 
 ;; Work as a server
 (require 'server)
@@ -124,7 +123,8 @@
 ;; Whitespace
 (setq whitespace-display-mappings
       '((space-mark ?\ [?\xB7] [?.])))
-(global-set-key (kbd "M-5") 'whitespace-mode)
+(global-set-key (kbd "M-6") 'whitespace-mode)
+(global-set-key (kbd "M-7") 'blank-mode)
 
 ;; Evil
 (evil-mode 1)
@@ -135,7 +135,7 @@
   (mapcar 'purecopy
           '((css-mode "{" "}" nil nil))))
 (add-hook 'css-mode-hook (lambda () (hs-minor-mode 1)))
-(global-set-key (kbd "M-7") 'hs-minor-mode)
+(global-set-key (kbd "M-8") 'hs-minor-mode)
 (global-set-key (kbd "M-[") 'hs-toggle-hiding)
 (global-set-key (kbd "M-]") 'hs-show-all)
 
@@ -148,7 +148,7 @@
 (line-number-mode t)
 (column-number-mode t)
 (global-linum-mode t)
-(global-set-key (kbd "M-6") 'linum-mode)
+(global-set-key (kbd "M-9") 'linum-mode)
 
 ;; Highlight current line
 (global-hl-line-mode)
@@ -174,9 +174,10 @@
 
 ;; Auto complete
 (ac-config-default)
-(setq ac-auto-show-menu .2)
-(setq ac-delay .2)
+(setq ac-auto-show-menu .5)
+(setq ac-delay .1)
 (setq ac-auto-start t)
+(setq self-insert-command 2)
 (add-to-list 'ac-dictionary-directories (concat user-emacs-directory "elpa/auto-complete/dict/"))
 
 ;; Speedbar
@@ -185,12 +186,13 @@
 
 ;; Bookmark settings
 (setq bookmark-save-flag t)
-(when (file-exists-p (concat user-emacs-directory "bookmarks"))
+(when (file-exists-p "./.emacs.bookmarks")
   (bookmark-load bookmark-default-file t))
 (global-set-key (kbd "M-2") 'bookmark-bmenu-list)
 (global-set-key (kbd "M-3") 'bookmark-jump)
 (global-set-key (kbd "M-4") 'bookmark-set)
-(setq bookmark-default-file (concat user-emacs-directory "bookmarks"))
+(global-set-key (kbd "M-5") 'bookmark-delete)
+(setq bookmark-default-file "./.emacs.bookmarks")
 
 ;; Define font
 (defun what-face (pos)
