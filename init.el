@@ -119,6 +119,7 @@
   (lambda ()
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
+(show-paren-mode t)
 
 ;; Whitespace
 (setq whitespace-display-mappings
@@ -247,7 +248,7 @@
  '(rainbow-delimiters-depth-7-face ((t (:foreground "#b57cf5"))))
  '(rainbow-delimiters-mismatched-face ((t (:background "#e5493d"))))
  '(rainbow-delimiters-unmatched-face ((t (:background "#e5493d"))))
- '(show-paren-match ((t (:background "brightmagenta"))))
+ '(show-paren-match ((t (:background "black" :foreground "brightwhite"))))
  '(speedbar-directory-face ((t (:foreground "yellow"))))
  '(whitespace-empty ((t (:background "color-250"))))
  '(whitespace-indentation ((t (:background "color-250"))))
