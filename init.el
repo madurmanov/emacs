@@ -134,9 +134,9 @@
 (defvar hs-special-modes-alist
   (mapcar 'purecopy
           '((css-mode "{" "}" nil nil))))
-(global-set-key (kbd "M-7") 'hs-toggle-hiding)
-(global-set-key (kbd "M-8") 'hs-hide-all)
-(global-set-key (kbd "M-9") 'hs-show-all)
+(add-hook 'css-mode-hook (lambda () (hs-minor-mode 1)))
+(global-set-key (kbd "M-[") 'hs-toggle-hiding)
+(global-set-key (kbd "M-]") 'hs-show-all)
 
 ;; Linum
 (defadvice linum-update-window (around linum-dynamic activate)
