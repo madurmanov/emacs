@@ -28,6 +28,7 @@
                      highlight-parentheses
                      indent-guide
                      jade-mode
+                     kakapo-mode
                      key-chord
                      php-mode
                      projectile
@@ -83,33 +84,6 @@
 ;; Delete selection
 (delete-selection-mode t)
 
-;; Indent
-(defun tab-to-tab ()
-  (interactive)
-  (global-set-key (kbd "TAB") 'self-insert-command))
-(defun tab-to-space ()
-  (interactive)
-  (global-set-key (kbd "TAB") 'indent-for-tab-command))
-(defun set-tab-width (width)
-  (interactive "nEnter tab width: ")
-  (setq-default tab-width width
-                my-tab-width width
-                standard-indent width
-                lisp-body-indent width
-                c-basic-offset width
-                js-indent-level width
-                css-indent-offset width)
-  (setq c-basic-offset width))
-(setq-default indent-tabs-mode nil
-              tab-always-indent nil)
-(defvar my-tab-width 2)
-(set-tab-width my-tab-width)
-(clean-aindent-mode t)
-(setq clean-aindent-is-simple-indent t)
-(add-hook 'php-mode-hook
-          (lambda ()
-            (setq c-basic-offset my-tab-width)))
-
 ;; Editorconfig
 (editorconfig-mode 1)
 
@@ -130,6 +104,26 @@
 ;; Evil
 (evil-mode 1)
 (evil-set-initial-state 'bs-mode 'emacs)
+
+;; Kakapo
+(setq kakapo-list '(fundamental-mode-hook
+                    text-mode-hook
+                    lisp-interaction-mode-hook
+                    lisp-mode-hook
+                    emacs-list-mode-hook
+                    html-mode-hook
+                    jade-mode-hook
+                    css-mode-mode-hook
+                    scss-mode-hook
+                    js-mode-hook
+                    php-mode-hook))
+(dolist (hook kakapo-list)
+  (add-hook hook 'kakapo-mode))
+(define-key evil-normal-state-map "o" (lambda () (interactive) (kakapo-open nil)))
+(define-key evil-normal-state-map "O" (lambda () (interactive) (kakapo-open t)))
+(define-key evil-insert-state-map (kbd "RET") 'kakapo-ret-and-indent)
+(define-key evil-insert-state-map (kbd "DEL") 'kakapo-backspace)
+(define-key evil-insert-state-map (kbd "<S-backspace>") 'kakapo-upline)
 
 ;; Folding
 (defvar hs-special-modes-alist
@@ -171,7 +165,7 @@
 ;; Yasnippet
 (yas-global-mode 1)
 (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))
+      '(concat user-emacs-directory "snippets"))
 
 ;; Auto complete
 (ac-config-default)
