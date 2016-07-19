@@ -117,7 +117,8 @@
                     css-mode-mode-hook
                     scss-mode-hook
                     js-mode-hook
-                    php-mode-hook))
+                    php-mode-hook
+                    perl-mode-hook))
 (dolist (hook kakapo-list)
   (add-hook hook 'kakapo-mode))
 (define-key evil-normal-state-map "o" (lambda () (interactive) (kakapo-open nil)))
