@@ -22,6 +22,7 @@
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 (setq package-list '(auto-complete
+                     blank-mode
                      clean-aindent-mode
                      editorconfig
                      evil
