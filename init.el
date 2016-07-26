@@ -114,7 +114,7 @@
                     emacs-list-mode-hook
                     html-mode-hook
                     jade-mode-hook
-                    css-mode-mode-hook
+                    css-mode-hook
                     scss-mode-hook
                     js-mode-hook
                     php-mode-hook
