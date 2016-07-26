@@ -23,7 +23,6 @@
 (package-initialize)
 (setq package-list '(auto-complete
                      blank-mode
-                     clean-aindent-mode
                      editorconfig
                      evil
                      highlight-parentheses
