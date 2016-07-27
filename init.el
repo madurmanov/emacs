@@ -102,8 +102,10 @@
 (global-set-key (kbd "M-7") 'blank-mode)
 
 ;; Evil
+(setq evil-search-module 'evil-search)
 (evil-mode 1)
 (evil-set-initial-state 'bs-mode 'emacs)
+(global-evil-visualstar-mode)
 
 ;; Kakapo
 (setq kakapo-list '(fundamental-mode-hook
