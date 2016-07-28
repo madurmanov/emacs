@@ -25,6 +25,7 @@
                      blank-mode
                      editorconfig
                      evil
+                     evil-visualstar
                      highlight-parentheses
                      indent-guide
                      jade-mode
@@ -32,7 +33,6 @@
                      key-chord
                      php-mode
                      projectile
-                     rainbow-delimiters
                      scss-mode
                      smex
                      sr-speedbar
@@ -45,7 +45,7 @@
     (package-install package)))
 (add-to-list 'load-path (concat user-emacs-directory "elpa/"))
 
-;; Associate files extension
+;; Associate files extension with modes
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . html-mode))
@@ -215,11 +215,6 @@
 ;; Indent guide
 (global-set-key (kbd "M-§") 'indent-guide-global-mode)
 
-;; Rainbow delimiters
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
-
 (custom-set-faces
  '(custom-face-tag ((t (:foreground "blue"))))
  '(custom-variable-tag ((t (:foreground "blue" :weight bold))))
@@ -236,15 +231,6 @@
  '(mode-line ((t (:background "brightwhite" :foreground "black"))))
  '(mode-line-buffer-id ((t (:foreground "yellow" :weight bold))))
  '(mode-line-inactive ((t (:background "brightwhite" :foreground "yellow"))))
- '(rainbow-delimiters-depth-1-face ((t (:foreground "#e5493d"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "#d57807"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "#c39900"))))
- '(rainbow-delimiters-depth-4-face ((t (:foreground "#96a700"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "#2c9edb"))))
- '(rainbow-delimiters-depth-6-face ((t (:foreground "#2c76db"))))
- '(rainbow-delimiters-depth-7-face ((t (:foreground "#b57cf5"))))
- '(rainbow-delimiters-mismatched-face ((t (:background "#e5493d"))))
- '(rainbow-delimiters-unmatched-face ((t (:background "#e5493d"))))
  '(show-paren-match ((t (:background "black" :foreground "brightwhite"))))
  '(speedbar-directory-face ((t (:foreground "yellow"))))
  '(whitespace-empty ((t (:background "color-250"))))
