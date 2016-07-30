@@ -99,13 +99,10 @@
 ;; Whitespace
 (setq whitespace-display-mappings
       '((space-mark ?\ [?\xB7] [?.])))
-(global-set-key (kbd "M-6") 'whitespace-mode)
-(global-set-key (kbd "M-7") 'blank-mode)
 
 ;; Evil
 (setq evil-search-module 'evil-search)
 (evil-mode 1)
-(evil-set-initial-state 'bs-mode 'emacs)
 (global-evil-visualstar-mode)
 
 ;; Kakapo
@@ -134,9 +131,6 @@
   (mapcar 'purecopy
           '((css-mode "{" "}" nil nil))))
 (add-hook 'css-mode-hook (lambda () (hs-minor-mode 1)))
-(global-set-key (kbd "M-8") 'hs-minor-mode)
-(global-set-key (kbd "M-[") 'hs-toggle-hiding)
-(global-set-key (kbd "M-]") 'hs-show-all)
 
 ;; Linum
 (defadvice linum-update-window (around linum-dynamic activate)
@@ -147,7 +141,6 @@
 (line-number-mode t)
 (column-number-mode t)
 (global-linum-mode t)
-(global-set-key (kbd "M-9") 'linum-mode)
 
 ;; Highlight current line
 (global-hl-line-mode)
@@ -161,9 +154,6 @@
 
 ;; Ibuffer
 (defalias 'list-buffers 'ibuffer)
-(setq bs-configurations
-      '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
-(global-set-key (kbd "M-1") 'bs-show)
 (add-hook 'ibuffer-mode-hook (lambda () (ibuffer-auto-mode 1)))
 
 ;; Yasnippet
@@ -181,16 +171,11 @@
 
 ;; Speedbar
 (setq speedbar-directory-unshown-regexp "^\\(\\.\\.*$\\)\\'")
-(global-set-key (kbd "M-0") 'sr-speedbar-toggle)
 
 ;; Bookmark settings
 (setq bookmark-save-flag t)
 (when (file-exists-p "./.emacs.bookmarks")
   (bookmark-load bookmark-default-file t))
-(global-set-key (kbd "M-2") 'bookmark-bmenu-list)
-(global-set-key (kbd "M-3") 'bookmark-jump)
-(global-set-key (kbd "M-4") 'bookmark-set)
-(global-set-key (kbd "M-5") 'bookmark-delete)
 (setq bookmark-default-file "./.emacs.bookmarks")
 
 ;; Define font
@@ -200,25 +185,28 @@
       (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
-;; Key bindings
-(global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "C-M-h") 'windmove-left)
-(global-set-key (kbd "C-M-j") 'windmove-down)
-(global-set-key (kbd "C-M-k") 'windmove-up)
-(global-set-key (kbd "C-M-l") 'windmove-right)
-
 ;; Key-chord
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.5)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
-;; Indent guide
-(global-set-key (kbd "M-§") 'indent-guide-global-mode)
-
 ;; Google translate
 (setq google-translate-translation-directions-alist
   '(("en" . "ru") ("ru" . "en")))
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-§") 'indent-guide-global-mode)
+(global-set-key (kbd "M-1") 'bookmark-bmenu-list)
+(global-set-key (kbd "M-2") 'bookmark-set)
+(global-set-key (kbd "M-3") 'bookmark-delete)
+(global-set-key (kbd "M-4") 'whitespace-mode)
+(global-set-key (kbd "M-5") 'blank-mode)
+(global-set-key (kbd "M-8") 'hs-minor-mode)
+(global-set-key (kbd "M-9") 'linum-mode)
+(global-set-key (kbd "M-0") 'sr-speedbar-toggle)
+(global-set-key (kbd "M-[") 'hs-toggle-hiding)
+(global-set-key (kbd "M-]") 'hs-show-all)
 (global-set-key (kbd "C-c g t") 'google-translate-at-point)
 (global-set-key (kbd "C-c g T") 'google-translate-query-translate)
 (global-set-key (kbd "C-c g g") 'google-translate-smooth-translate)
