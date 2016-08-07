@@ -194,10 +194,6 @@
 (setq google-translate-translation-directions-alist
   '(("en" . "ru") ("ru" . "en")))
 
-;; Gnus
-(setq gnus-select-method '(nnrss))
-(setq gnus-summary-line-format "%U%R%z%d %I%(%[%F%] %s %)\n")
-
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-§") 'indent-guide-global-mode)
@@ -241,4 +237,8 @@
  '(whitespace-tab ((t (:background "color-250")))))
 
 (custom-set-variables
+ '(newsticker-url-list
+    (quote
+      (("Reddit.Emacs" "https://www.reddit.com/r/emacs/.rss" nil nil nil))))
+ '(newsticker-url-list-defaults nil)
  '(speedbar-show-unknown-files t))
