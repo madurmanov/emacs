@@ -104,6 +104,7 @@
 (setq evil-search-module 'evil-search)
 (evil-mode 1)
 (global-evil-visualstar-mode)
+(setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
 
 ;; Kakapo
 (setq kakapo-list '(fundamental-mode-hook
