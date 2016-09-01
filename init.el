@@ -168,7 +168,6 @@
 (setq ac-delay .1)
 (setq ac-auto-start t)
 (setq self-insert-command 2)
-(add-to-list 'ac-dictionary-directories (concat user-emacs-directory "elpa/auto-complete/dict/"))
 
 ;; Speedbar
 (setq speedbar-directory-unshown-regexp "^\\(\\.\\.*$\\)\\'")
