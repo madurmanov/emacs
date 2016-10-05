@@ -1,6 +1,7 @@
 auto-save-list/
 elpa/*
 !elpa/linum.el
+url/
 ac-comphist.dat
 ido.last
 .emacs.bookmarks

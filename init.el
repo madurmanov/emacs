@@ -7,12 +7,6 @@
 (setq auto-save-list-file-name nil)
 (setq auto-save-default nil)
 
-;; Save open buffers
-(setq desktop-dirname "./"
-      desktop-path (list desktop-dirname)
-      desktop-load-locked-desktop nil)
-(desktop-save-mode 1)
-
 ;; Work as a server
 (require 'server)
 (unless (server-running-p)
@@ -56,9 +50,6 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 
-;; Delete trailing whitespaces before save
-(add-to-list 'write-file-functions 'delete-trailing-whitespace)
-
 ;; Disable start screen
 (setq inhibit-splash-screen t)
 (setq ingibit-startup-message t)
@@ -68,6 +59,15 @@
 (setq use-dialog-box nil)
 (setq redisplay-dont-pause t)
 (setq ring-bell-function 'ignore)
+
+;; Save open buffers
+(setq desktop-dirname "./"
+      desktop-path (list desktop-dirname)
+      desktop-load-locked-desktop nil)
+(desktop-save-mode 1)
+
+;; Delete trailing whitespaces before save
+(add-to-list 'write-file-functions 'delete-trailing-whitespace)
 
 ;; Highlight syntax
 (global-font-lock-mode 1)
