@@ -1,10 +1,6 @@
 auto-save-list/
-elpa/*
-!elpa/linum.el
-url/
-newsticker/
+elpa/
 ac-comphist.dat
 ido.last
-.emacs.bookmarks
-.emacs.desktop
-.emacs.desktop.lock
+custom.el
+recentf
