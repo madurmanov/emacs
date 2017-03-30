@@ -61,6 +61,14 @@
 (dolist (package package-list)
   (require-package package))
 
+(if (fboundp 'with-eval-after-load)
+    (defalias 'after-load 'with-eval-after-load)
+  (defmacro after-load (feature &rest body)
+    "After FEATURE is loaded, evaluate BODY."
+    (declare (indent defun))
+    `(eval-after-load ,feature
+       '(progn ,@body))))
+
 
 ;; Associate files extension with modes
 
@@ -90,12 +98,96 @@
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
+(show-paren-mode 1)
+
+(setq-default
+  blink-cursor-interval 0.4
+  indent-tabs-mode nil
+  tooltip-delay 1.5
+  truncate-lines nil
+  truncate-partial-width-windows nil)
+
+(transient-mark-mode t)
+
+(when (maybe-require-package 'indent-guide)
+  (add-hook 'prog-mode-hook 'indent-guide-mode)
+  (after-load 'indent-guide
+    (diminish 'indent-guide-mode)))
 
 (require-package 'cl-lib)
 (require-package 'diminish)
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
 (require 'cl-lib)
+
+(require-package 'undo-tree)
+(global-undo-tree-mode)
+(diminish 'undo-tree-mode)
+
+
+;; Move line by arrows
+
+(require-package 'move-dup)
+(global-set-key [M-up] 'md/move-lines-up)
+(global-set-key [M-down] 'md/move-lines-down)
+(global-set-key [M-S-up] 'md/move-lines-up)
+(global-set-key [M-S-down] 'md/move-lines-down)
+
+(global-set-key (kbd "C-c d") 'md/duplicate-down)
+(global-set-key (kbd "C-c D") 'md/duplicate-up)
+
+
+;; Next line with reindent
+
+(defun sanityinc/open-line-with-reindent (n)
+  "A version of `open-line' which reindents the start and end positions.
+If there is a fill prefix and/or a `left-margin', insert them
+on the new line if the line would have been blank.
+With arg N, insert N newlines."
+  (interactive "*p")
+  (let* ((do-fill-prefix (and fill-prefix (bolp)))
+	 (do-left-margin (and (bolp) (> (current-left-margin) 0)))
+	 (loc (point-marker))
+	 ;; Don't expand an abbrev before point.
+	 (abbrev-mode nil))
+    (delete-horizontal-space t)
+    (newline n)
+    (indent-according-to-mode)
+    (when (eolp)
+      (delete-horizontal-space t))
+    (goto-char loc)
+    (while (> n 0)
+      (cond ((bolp)
+	     (if do-left-margin (indent-to (current-left-margin)))
+	     (if do-fill-prefix (insert-and-inherit fill-prefix))))
+      (forward-line 1)
+      (setq n (1- n)))
+    (goto-char loc)
+    (end-of-line)
+    (indent-according-to-mode)))
+
+    (global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
+
+
+;; Guide Key
+
+(require-package 'guide-key)
+(setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r" "M-s" "C-h"))
+(add-hook 'after-init-hook
+          (lambda ()
+            (guide-key-mode 1)
+            (diminish 'guide-key-mode)))
+
+
+;; Newline behaviour
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+(defun m/newline-at-end-of-line ()
+  "Move to end of line, enter a newline, and reindent."
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent))
+  (global-set-key (kbd "S-<return>") 'm/newline-at-end-of-line)
 
 
 ;; Smex
@@ -129,7 +221,6 @@
 ;; Electric mode
 
 (electric-pair-mode 1)
-(electric-indent-mode -1)
 
 
 ;; Editorconfig
@@ -138,20 +229,14 @@
 (editorconfig-mode 1)
 
 
-;; Hightlight parentheses
-
-(define-globalized-minor-mode global-highlight-parentheses-mode
-  highlight-parentheses-mode
-  (lambda ()
-    (highlight-parentheses-mode t)))
-(global-highlight-parentheses-mode t)
-(show-paren-mode t)
-
-
 ;; Whitespace
 
-(setq whitespace-display-mappings
-      '((space-mark ?\ [?\xB7] [?.])))
+(setq-default show-trailing-whitespace t)
+
+(require-package 'whitespace-cleanup-mode)
+(global-whitespace-cleanup-mode t)
+
+(global-set-key [remap just-one-space] 'cycle-spacing)
 
 
 ;; Evil
@@ -187,16 +272,17 @@
 
 ;; Linum
 
-(define-globalized-minor-mode m-global-linum-mode linum-mode
+(require-package 'nlinum)
+(define-globalized-minor-mode m-global-nlinum-mode nlinum-mode
   (lambda ()
     (unless (or (minibufferp)
                 (derived-mode-p 'Custom-mode
                                 'ibuffer-mode
                                 'messages-buffer-mode
                                 'help-mode))
-      (linum-mode t))))
-(setq linum-format "%3d \u007c ")
-(m-global-linum-mode t)
+      (nlinum-mode t))))
+(setq nlinum-format "%3d \u007c ")
+(m-global-nlinum-mode t)
 
 
 ;; Uniquify
@@ -253,14 +339,6 @@
 (setq speedbar-directory-unshown-regexp "^\\(\\.\\.*$\\)\\'")
 
 
-;; Bookmark settings
-
-(setq bookmark-save-flag t)
-(when (file-exists-p "./.emacs.bookmarks")
-  (bookmark-load bookmark-default-file t))
-(setq bookmark-default-file "./.emacs.bookmarks")
-
-
 ;; Key-chord
 
 (key-chord-mode 1)
@@ -300,7 +378,6 @@
 
 ;; Shortcuts
 
-(global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-§") 'indent-guide-global-mode)
 (global-set-key (kbd "M-1") 'bookmark-bmenu-list)
 (global-set-key (kbd "M-2") 'bookmark-set)
@@ -308,7 +385,7 @@
 (global-set-key (kbd "M-4") 'whitespace-mode)
 (global-set-key (kbd "M-5") 'blank-mode)
 (global-set-key (kbd "M-8") 'hs-minor-mode)
-(global-set-key (kbd "M-9") 'linum-mode)
+(global-set-key (kbd "M-9") 'nlinum-mode)
 (global-set-key (kbd "M-0") 'sr-speedbar-toggle)
 (global-set-key (kbd "M-[") 'hs-toggle-hiding)
 (global-set-key (kbd "M-]") 'hs-show-all)
@@ -322,9 +399,19 @@
 (require-package 'color-theme-solarized)
 (load-theme 'solarized t)
 (custom-set-faces
+ '(flycheck-warning ((t (:inherit warning))))
  '(linum ((t (:background "white" :foreground "black"))))
  '(mode-line ((t (:background "black" :foreground "white"))))
  '(mode-line-inactive ((t (:background "black" :foreground "white")))))
+
+
+;; Define font
+
+(defun what-face (pos)
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+		  (get-char-property (point) 'face))))
+  (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
 
 ;; Work as a server
@@ -332,3 +419,5 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(provide 'init)
