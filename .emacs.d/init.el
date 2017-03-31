@@ -70,6 +70,18 @@
        '(progn ,@body))))
 
 
+;; Exec path from shell
+
+(require-package 'exec-path-from-shell)
+(after-load 'exec-path-from-shell
+  (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID"
+                 "GPG_AGENT_INFO" "LANG" "LC_CTYPE"))
+    (add-to-list 'exec-path-from-shell-variables var)))
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+  (provide 'init-exec-path)
+
+
 ;; Associate files extension with modes
 
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
@@ -84,28 +96,32 @@
 
 ;; Interface
 
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq ingibit-startup-message t)
-(setq inhibit-startup-echo-area-message t)
-(setq use-file-dialog nil)
-(setq use-dialog-box nil)
-(setq redisplay-dont-pause t)
-(setq indicate-empty-lines t)
-(setq ring-bell-function 'ignore)
-(delete-selection-mode t)
-(global-hl-line-mode)
-(line-number-mode t)
-(column-number-mode t)
-(size-indication-mode t)
-(show-paren-mode 1)
+
+(setq
+  custom-file (expand-file-name "custom.el" user-emacs-directory)
+  ingibit-startup-message t
+  inhibit-startup-echo-area-message t
+  use-file-dialog nil
+  use-dialog-box nil
+  redisplay-dont-pause t
+  indicate-empty-lines t
+  ring-bell-function 'ignore)
 
 (setq-default
   blink-cursor-interval 0.4
   indent-tabs-mode nil
   tooltip-delay 1.5
   truncate-lines nil
-  truncate-partial-width-windows nil)
+  truncate-partial-width-windows nil
+  initial-scratch-message (concat ";; Happy hacking, " user-login-name "\n\n"))
+
+(delete-selection-mode t)
+(global-hl-line-mode)
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
+(show-paren-mode 1)
 
 (transient-mark-mode t)
 
