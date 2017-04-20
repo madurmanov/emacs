@@ -295,13 +295,6 @@
  recentf-exclude '("/tmp/"))
 
 
-;; Flycheck
-
-(require-package 'flycheck)
-(add-hook 'after-init-hook 'global-flycheck-mode)
-(setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
-
-
 ;; Mmm
 
 (require-package 'mmm-mode)
@@ -331,7 +324,8 @@
  '(flycheck-warning ((t (:inherit warning))))
  '(linum ((t (:background "white" :foreground "black"))))
  '(mode-line ((t (:background "black" :foreground "white"))))
- '(mode-line-inactive ((t (:background "black" :foreground "white")))))
+ '(mode-line-inactive ((t (:background "black" :foreground "white"))))
+ '(org-todo ((t (:background "none" :foreground "red" :weight bold)))))
 
 
 ;; Uniquify
