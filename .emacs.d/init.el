@@ -67,7 +67,8 @@
 (size-indication-mode t)
 (show-paren-mode t)
 (transient-mark-mode t)
-(electric-pair-mode 1)
+(electric-indent-mode 0)
+(electric-pair-mode t)
 
 
 ;; Packages
