@@ -125,10 +125,22 @@
 (require-package 'mwe-log-commands)
 
 
+;; Redefine meta key from ESC
+
+(define-key input-decode-map "\e\eOA" [(meta up)])
+(define-key input-decode-map "\e\eOB" [(meta down)])
+
+
 ;; Indent guide
 
 (maybe-require-package 'indent-guide)
 (global-set-key (kbd "M-§") 'indent-guide-global-mode)
+
+
+;; Resize buffer
+
+(global-set-key (kbd "M--") 'shrink-window-horizontally)
+(global-set-key (kbd "M-=") 'enlarge-window-horizontally)
 
 
 ;; Undo tree
