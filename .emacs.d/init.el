@@ -195,6 +195,12 @@
 (define-key evil-insert-state-map (kbd "<S-backspace>") 'kakapo-upline)
 
 
+;; Indent guide
+
+(require-package 'indent-guide)
+(global-set-key (kbd "M-5") 'indent-guide-global-mode)
+
+
 ;; Linum
 
 (setq linum-format "%3d \u007c ")
