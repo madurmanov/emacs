@@ -45,7 +45,6 @@
 
 (setq-default
   blink-cursor-interval 0.4
-  indent-tabs-mode nil
   tooltip-delay 1.5
   truncate-lines nil
   truncate-partial-width-windows nil
@@ -58,7 +57,7 @@
 (size-indication-mode t)
 (show-paren-mode t)
 (transient-mark-mode t)
-(electric-indent-mode nil)
+(electric-indent-mode -1)
 (electric-pair-mode t)
 
 
@@ -260,6 +259,17 @@
 (ido-everywhere t)
 (setq ido-virtual-buffers t)
 (setq ido-enable-flex-matching t)
+
+
+;; Kakapo
+
+(require-package 'kakapo-mode)
+(add-hook 'after-change-major-mode-hook 'kakapo-mode)
+(define-key evil-normal-state-map "o" (lambda () (interactive) (kakapo-open nil)))
+(define-key evil-normal-state-map "O" (lambda () (interactive) (kakapo-open t)))
+(define-key evil-insert-state-map (kbd "RET") 'kakapo-ret-and-indent)
+(define-key evil-insert-state-map (kbd "DEL") 'kakapo-backspace)
+(define-key evil-insert-state-map (kbd "<S-backspace>") 'kakapo-upline)
 
 
 (provide 'init)
