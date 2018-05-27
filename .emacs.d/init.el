@@ -33,7 +33,7 @@
 (global-set-key (kbd "M-3") 'bookmark-delete)
 
 
-;; Interface
+;; Common
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -46,8 +46,6 @@
 (setq-default
   blink-cursor-interval 0.4
   tooltip-delay 1.5
-  truncate-lines nil
-  truncate-partial-width-windows nil
   initial-scratch-message (concat ";; Happy hacking, " user-login-name "\n\n"))
 
 (delete-selection-mode t)
@@ -85,6 +83,7 @@
 
 (require-package 'editorconfig)
 (editorconfig-mode t)
+(diminish 'editorconfig-mode)
 
 
 ;; Theme
@@ -144,6 +143,23 @@
 (global-set-key [remap execute-extended-command] 'smex)
 
 
+;; Ido
+
+(ido-mode t)
+(icomplete-mode t)
+(ido-everywhere t)
+(setq ido-virtual-buffers t)
+(setq ido-enable-flex-matching t)
+
+
+;; Recentf
+
+(recentf-mode t)
+(setq-default
+ recentf-max-saved-items 1000
+ recentf-exclude '("/tmp/"))
+
+
 ;; Whitespace
 
 (setq-default show-trailing-whitespace t)
@@ -168,18 +184,21 @@
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 
+;; Kakapo
+
+(require-package 'kakapo-mode)
+(add-hook 'after-change-major-mode-hook 'kakapo-mode)
+(define-key evil-normal-state-map "o" (lambda () (interactive) (kakapo-open nil)))
+(define-key evil-normal-state-map "O" (lambda () (interactive) (kakapo-open t)))
+(define-key evil-insert-state-map (kbd "RET") 'kakapo-ret-and-indent)
+(define-key evil-insert-state-map (kbd "DEL") 'kakapo-backspace)
+(define-key evil-insert-state-map (kbd "<S-backspace>") 'kakapo-upline)
+
+
 ;; Linum
 
-(define-globalized-minor-mode m-global-linum-mode linum-mode
-  (lambda ()
-    (unless (or (minibufferp)
-                (derived-mode-p 'Custom-mode
-                                'ibuffer-mode
-                                'messages-buffer-mode
-                                'help-mode))
-      (linum-mode t))))
 (setq linum-format "%3d \u007c ")
-(m-global-linum-mode t)
+(global-linum-mode t)
 (global-set-key (kbd "M-9") 'linum-mode)
 
 
@@ -190,12 +209,21 @@
 (defalias 'list-buffers 'ibuffer)
 
 
+;; Uniquify buffers names
+
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator " \u007c ")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
+
+
 ;; Yasnippet
 
 (require-package 'yasnippet)
 (yas-global-mode t)
 (setq yas-snippet-dirs
       '(concat user-emacs-directory "snippets"))
+(diminish 'yas-minor-mode)
 
 
 ;; Auto complete
@@ -206,6 +234,7 @@
 (setq ac-delay .1)
 (setq ac-auto-start t)
 (setq self-insert-command 2)
+(diminish 'auto-complete-mode)
 
 
 ;; Speedbar
@@ -218,22 +247,6 @@
 (global-set-key (kbd "M-0") 'sr-speedbar-toggle)
 
 
-;; Recentf
-
-(recentf-mode t)
-(setq-default
- recentf-max-saved-items 1000
- recentf-exclude '("/tmp/"))
-
-
-;; Mmm
-
-(require-package 'mmm-mode)
-(require 'mmm-auto)
-(setq mmm-global-mode 'buffers-with-submode-classes)
-(setq mmm-submode-decoration-level 2)
-
-
 ;; Google translate
 
 (require-package 'google-translate)
@@ -242,34 +255,6 @@
 (global-set-key (kbd "C-c g t") 'google-translate-at-point)
 (global-set-key (kbd "C-c g T") 'google-translate-query-translate)
 (global-set-key (kbd "C-c g g") 'google-translate-smooth-translate)
-
-
-;; Uniquify
-
-(setq uniquify-buffer-name-style 'reverse)
-(setq uniquify-separator " \u007c ")
-(setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
-
-
-;; Ido
-
-(ido-mode t)
-(icomplete-mode t)
-(ido-everywhere t)
-(setq ido-virtual-buffers t)
-(setq ido-enable-flex-matching t)
-
-
-;; Kakapo
-
-(require-package 'kakapo-mode)
-(add-hook 'after-change-major-mode-hook 'kakapo-mode)
-(define-key evil-normal-state-map "o" (lambda () (interactive) (kakapo-open nil)))
-(define-key evil-normal-state-map "O" (lambda () (interactive) (kakapo-open t)))
-(define-key evil-insert-state-map (kbd "RET") 'kakapo-ret-and-indent)
-(define-key evil-insert-state-map (kbd "DEL") 'kakapo-backspace)
-(define-key evil-insert-state-map (kbd "<S-backspace>") 'kakapo-upline)
 
 
 (provide 'init)
