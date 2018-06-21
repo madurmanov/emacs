@@ -1,7 +1,7 @@
 #!/bin/bash
 
-eval "$(curl -sL https://raw.githubusercontent.com/madurmanov/install/master/install.sh)"
+eval "$(curl -sL https://raw.githubusercontent.com/madurmanov/musical-install/master/musical-install.sh)"
 
-install_start
-install .emacs.d $HOME true
-install_complete
+mi_start
+mi_install .emacs.d $HOME
+mi_complete
