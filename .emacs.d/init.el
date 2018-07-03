@@ -57,6 +57,7 @@
 (transient-mark-mode t)
 (electric-indent-mode -1)
 (electric-pair-mode t)
+(menu-bar-mode -1)
 
 
 ;; Packages
