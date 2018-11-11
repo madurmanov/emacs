@@ -271,4 +271,10 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . js-jsx-mode))
 
 
+;; Csscomb
+
+(require-package 'css-comb)
+(require-package 'web-beautify)
+
+
 (provide 'init)
