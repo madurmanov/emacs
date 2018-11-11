@@ -264,4 +264,11 @@
 (global-set-key (kbd "C-c g g") 'google-translate-smooth-translate)
 
 
+;; Associate files with modes
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . js-jsx-mode))
+
+
 (provide 'init)
