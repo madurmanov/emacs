@@ -80,6 +80,18 @@
 (require-package 'scratch)
 
 
+;; Custom
+
+(custom-set-variables
+ '(css-fontify-colors nil))
+(custom-set-faces
+ '(flycheck-warning ((t (:inherit warning))))
+ '(linum ((t (:background "white" :foreground "black" :strike-through nil :overline nil :underline nil :weight normal))))
+ '(mode-line ((t (:background "black" :foreground "white"))))
+ '(mode-line-inactive ((t (:background "black" :foreground "white"))))
+ '(org-todo ((t (:background "none" :foreground "red" :weight bold)))))
+
+
 ;; Editorconfig
 
 (require-package 'editorconfig)
@@ -91,12 +103,6 @@
 
 (require-package 'color-theme-solarized)
 (load-theme 'solarized t)
-(custom-set-faces
- '(flycheck-warning ((t (:inherit warning))))
- '(linum ((t (:background "white" :foreground "black"))))
- '(mode-line ((t (:background "black" :foreground "white"))))
- '(mode-line-inactive ((t (:background "black" :foreground "white"))))
- '(org-todo ((t (:background "none" :foreground "red" :weight bold)))))
 
 
 ;; Resize buffer
@@ -207,6 +213,8 @@
 (setq linum-format "%3d \u007c ")
 (global-linum-mode t)
 (global-set-key (kbd "M-9") 'linum-mode)
+(setq linum-disabled-modes-list '(help-mode ibuffer-mode compilation-mode))
+(defun linum-on () (unless (or (minibufferp) (member major-mode linum-disabled-modes-list)) (linum-mode 1)))
 
 
 ;; Ibuffer
