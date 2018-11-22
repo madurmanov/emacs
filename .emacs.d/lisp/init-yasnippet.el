@@ -1,7 +1,18 @@
+(add-to-list 'auto-mode-alist '("\\.yasnippet\\'" . snippet-mode))
+
+(diminish 'yas-minor-mode)
 (yas-global-mode t)
 (setq yas-snippet-dirs
       '(concat user-emacs-directory "snippets"))
-(diminish 'yas-minor-mode)
+(setq-default mode-require-final-newline nil)
 
+(setq yas-prompt-functions '(yas-dropdown-prompt
+			     yas-ido-prompt
+			     yas-completing-prompt))
+
+(defadvice yas-insert-snippet (around use-completing-prompt activate)
+  "Use `yas-completing-prompt' for `yas-prompt-functions' but only here..."
+  (let* ((yas-prompt-functions '(yas-completing-prompt)))
+    ad-do-it))
 
 (provide 'init-yasnippet)

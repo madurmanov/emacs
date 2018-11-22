@@ -48,7 +48,6 @@
 (require 'init-ido)
 (require 'init-indent-guide)
 (require 'init-key-chord)
-(require 'init-kakapo)
 (require 'init-linum)
 (require 'init-move-dup)
 (require 'init-recentf)
