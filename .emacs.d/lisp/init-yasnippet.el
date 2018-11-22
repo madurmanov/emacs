@@ -1,6 +1,10 @@
+;;; init-yasnippet.el -- Initialize yasippet
+;;; Commentary:
+;;; Code:
+(require 'yasnippet)
+
 (add-to-list 'auto-mode-alist '("\\.yasnippet\\'" . snippet-mode))
 
-(diminish 'yas-minor-mode)
 (yas-global-mode t)
 (setq yas-snippet-dirs
       '(concat user-emacs-directory "snippets"))
@@ -16,3 +20,4 @@
     ad-do-it))
 
 (provide 'init-yasnippet)
+;;; init-yasnippet.el ends here

@@ -1,3 +1,6 @@
+;;; init-speedbar.el -- Initialize speedbar
+;;; Commentary:
+;;; Code:
 (setq speedbar-directory-unshown-regexp "^\\(\\.\\.*$\\)\\'")
 (setq speedbar-show-unknown-files t)
 (setq speedbar-use-images nil)
@@ -6,3 +9,4 @@
 
 
 (provide 'init-speedbar)
+;;; init-speedbar.el ends here

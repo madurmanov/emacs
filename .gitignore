@@ -2,7 +2,9 @@ auto-save-list/
 elpa/
 url/
 ac-comphist.dat
-ido.last
 custom.el
+ido.last
+projectile.cache
+projectile-bookmarks.eld
 recentf
 .smex-items

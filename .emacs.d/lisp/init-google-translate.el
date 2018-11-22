@@ -1,3 +1,8 @@
+;;; init-google-translate.el -- Initialize google translate
+;;; Commentary:
+;;; Code:
+(require 'google-translate)
+
 (setq google-translate-translation-directions-alist
   '(("en" . "ru") ("ru" . "en")))
 (global-set-key (kbd "C-c g t") 'google-translate-at-point)
@@ -6,3 +11,4 @@
 
 
 (provide 'init-google-translate)
+;;; init-google-translate.el ends here

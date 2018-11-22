@@ -1,3 +1,8 @@
+;;; init-linum.el -- Initialize linum
+;;; Commentary:
+;;; Code:
+(require 'linum)
+
 (setq linum-format "%3d \u007c ")
 (global-linum-mode t)
 (global-set-key (kbd "M-9") 'linum-mode)
@@ -14,3 +19,4 @@
 
 
 (provide 'init-linum)
+;;; init-linum.el ends here

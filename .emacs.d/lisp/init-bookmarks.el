@@ -1,4 +1,10 @@
+;;; init-bookmarks.el -- Initialize bookmarks
+;;; Commentary:
+;;; Code:
+(require 'bookmark)
+
 (setq bookmark-save-flag t)
+
 (when (file-exists-p "./.emacs.bookmarks")
   (bookmark-load bookmark-default-file t))
 (setq bookmark-default-file "./.emacs.bookmarks")
@@ -9,3 +15,4 @@
 
 
 (provide 'init-bookmarks)
+;;; init-bookmarks.el ends here
