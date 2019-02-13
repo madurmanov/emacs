@@ -62,6 +62,5 @@
 (require-package 'web-mode)
 (require-package 'yasnippet)
 
-
 (provide 'init-packages)
 ;;; init-packages.el ends here

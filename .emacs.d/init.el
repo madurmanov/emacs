@@ -31,8 +31,8 @@
 
 (require 'init-css)
 (require 'init-js)
+(require 'init-php)
 (require 'init-markdown)
-
 
 (provide 'init)
 ;;; init.el ends here

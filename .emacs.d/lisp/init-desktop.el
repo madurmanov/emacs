@@ -8,6 +8,5 @@
       desktop-load-locked-desktop nil)
 (desktop-save-mode t)
 
-
 (provide 'init-desktop)
 ;;; init-desktop.el ends here

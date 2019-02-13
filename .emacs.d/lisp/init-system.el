@@ -96,6 +96,5 @@
  '(mode-line-inactive ((t (:background "black" :foreground "white"))))
  '(org-todo ((t (:background "none" :foreground "red" :weight bold)))))
 
-
 (provide 'init-system)
 ;;; init-system.el ends here

@@ -13,6 +13,5 @@
 (global-set-key (kbd "M-2") 'bookmark-set)
 (global-set-key (kbd "M-3") 'bookmark-delete)
 
-
 (provide 'init-bookmarks)
 ;;; init-bookmarks.el ends here

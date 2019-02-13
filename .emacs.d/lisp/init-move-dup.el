@@ -6,6 +6,5 @@
 (global-set-key (kbd "C-c d") 'md/duplicate-down)
 (global-set-key (kbd "C-c D") 'md/duplicate-up)
 
-
 (provide 'init-move-dup)
 ;;; init-move-dup.el ends here

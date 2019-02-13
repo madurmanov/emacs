@@ -6,6 +6,5 @@
 
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
 
-
 (provide 'init-markdown)
 ;;; init-markdown.el ends here

@@ -17,6 +17,5 @@
                                   woman-mode))
 (defun linum-on () (unless (or (minibufferp) (member major-mode linum-disabled-modes-list)) (linum-mode 1)))
 
-
 (provide 'init-linum)
 ;;; init-linum.el ends here

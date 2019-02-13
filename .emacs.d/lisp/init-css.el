@@ -6,6 +6,5 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.sass\\'" . css-mode))
 
-
 (provide 'init-css)
 ;;; init-css.el ends here

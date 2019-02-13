@@ -9,6 +9,5 @@
 (global-set-key (kbd "C-c g T") 'google-translate-query-translate)
 (global-set-key (kbd "C-c g g") 'google-translate-smooth-translate)
 
-
 (provide 'init-google-translate)
 ;;; init-google-translate.el ends here

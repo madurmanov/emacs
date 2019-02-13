@@ -11,6 +11,5 @@
 (custom-set-variables
  '(projectile-switch-project-action (quote projectile-dired)))
 
-
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

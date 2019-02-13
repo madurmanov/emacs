@@ -6,6 +6,5 @@
  recentf-max-saved-items 1000
  recentf-exclude '("/tmp/"))
 
-
 (provide 'init-recentf)
 ;;; init-recentf.el ends here

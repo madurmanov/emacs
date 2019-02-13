@@ -9,6 +9,5 @@
             (guide-key-mode t)
             (diminish 'guide-key-mode)))
 
-
 (provide 'init-guide-key)
 ;;; init-guide-key.el ends here
