@@ -94,7 +94,10 @@
  '(linum ((t (:background "white" :foreground "black" :strike-through nil :overline nil :underline nil :weight normal))))
  '(mode-line ((t (:background "black" :foreground "white"))))
  '(mode-line-inactive ((t (:background "black" :foreground "white"))))
- '(org-todo ((t (:background "none" :foreground "red" :weight bold)))))
+ '(org-todo ((t (:background "none" :foreground "red" :weight bold))))
+ '(web-mode-html-attr-name-face ((t (:foreground "green"))))
+ '(web-mode-html-tag-bracket-face ((t (:foreground "black"))))
+ '(web-mode-html-tag-face ((t (:foreground "black")))))
 
 (provide 'init-system)
 ;;; init-system.el ends here
