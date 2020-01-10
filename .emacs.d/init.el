@@ -29,6 +29,7 @@
 
 (require 'init-diminish)
 
+(require 'init-html)
 (require 'init-css)
 (require 'init-js)
 (require 'init-php)
