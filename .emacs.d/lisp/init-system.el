@@ -7,8 +7,6 @@
 (require 'whitespace)
 (require 'windmove)
 
-(load-theme 'solarized t)
-
 (setq user-full-name "Mikhail Durmanov")
 (setq user-mail-address "madurmanov@gmail.com")
 
@@ -91,9 +89,12 @@
  '(css-fontify-colors nil))
 (custom-set-faces
  '(flycheck-warning ((t (:inherit warning))))
- '(linum ((t (:background "white" :foreground "black" :strike-through nil :overline nil :underline nil :weight normal))))
- '(mode-line ((t (:background "black" :foreground "white"))))
- '(mode-line-inactive ((t (:background "black" :foreground "white"))))
+ '(font-lock-comment-face ((t (:foreground "blue"))))
+ '(header-line-highlight ((t (:background "white"))))
+ '(highlight ((t (:background "white"))))
+ '(isearch ((t (:background "green"))))
+ '(linum ((t (:background "white" :foreground "black" :underline nil))))
+ '(mode-line ((t (:background "white"))))
  '(org-todo ((t (:background "none" :foreground "red" :weight bold))))
  '(web-mode-html-attr-name-face ((t (:foreground "green"))))
  '(web-mode-html-tag-bracket-face ((t (:foreground "black"))))

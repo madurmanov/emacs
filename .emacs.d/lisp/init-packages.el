@@ -26,7 +26,6 @@
         (require-package package min-version t)))))
 
 (require-package 'auto-yasnippet)
-(require-package 'color-theme-solarized)
 (require-package 'company)
 (require-package 'counsel)
 (require-package 'counsel-projectile)
