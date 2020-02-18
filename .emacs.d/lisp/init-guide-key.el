@@ -3,7 +3,7 @@
 ;;; Code:
 (require 'guide-key)
 
-(setq guide-key/guide-key-sequence '("C-x" "C-c" "C-h"))
+(setq guide-key/guide-key-sequence '("C-h"))
 (add-hook 'after-init-hook
           (lambda ()
             (guide-key-mode t)
