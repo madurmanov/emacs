@@ -1,11 +1,15 @@
-;;; init.el -- Initialize
+;;; init.el --- Initialize
 ;;; Commentary:
 ;;; Code:
-(let* ((minver "26.1"))
+
+(let* ((minver "26.3"))
   (when (version< emacs-version minver)
     (error "Emacs v%s or higher is required" minver)))
 
-(push (expand-file-name "~/.emacs.d/lisp") load-path)
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+;; Resolve flycheck load local lisp files error
+(setq flycheck-emacs-lisp-load-path 'inherit)
 
 (require 'init-packages)
 (require 'init-system)
