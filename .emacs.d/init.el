@@ -2,6 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Adjust garbage collector thresholds for decrease startup time
+(setq gc-cons-threshold (* 128 1024 1024))
+(add-hook 'emacs-startup-hook
+          (lambda () (setq gc-cons-threshold (* 20 1024 1024))))
+
 (let* ((minver "26.3"))
   (when (version< emacs-version minver)
     (error "Emacs v%s or higher is required" minver)))
