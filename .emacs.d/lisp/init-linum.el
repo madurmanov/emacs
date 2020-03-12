@@ -1,7 +1,9 @@
 ;;; init-linum.el -- Initialize linum
 ;;; Commentary:
 ;;; Code:
+
 (require 'linum)
+
 
 (setq linum-format "%3d \u007c ")
 (global-linum-mode t)
@@ -16,6 +18,7 @@
                                   text-mode
                                   woman-mode))
 (defun linum-on () (unless (or (minibufferp) (member major-mode linum-disabled-modes-list)) (linum-mode 1)))
+
 
 (provide 'init-linum)
 ;;; init-linum.el ends here

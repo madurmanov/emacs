@@ -1,15 +1,19 @@
 ;;; init-projectile.el -- Initialize projectile
 ;;; Commentary:
 ;;; Code:
-(require 'projectile)
 
-(setq projectile-cache-file (concat user-emacs-directory "projectile.cache"))
-(setq projectile-known-projects-file (concat user-emacs-directory "projectile-bookmarks.eld"))
+(maybe-require-package 'projectile)
+(maybe-require-package 'ibuffer-projectile)
 
-(projectile-global-mode t)
 
-(custom-set-variables
- '(projectile-switch-project-action (quote projectile-dired)))
+(add-hook 'after-init-hook 'projectile-mode)
+
+;; Shorter modeline
+(setq-default projectile-mode-line-prefix " Pr")
+
+(after-load 'projectile
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

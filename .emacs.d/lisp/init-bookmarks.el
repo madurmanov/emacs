@@ -1,7 +1,9 @@
 ;;; init-bookmarks.el -- Initialize bookmarks
 ;;; Commentary:
 ;;; Code:
+
 (require 'bookmark)
+
 
 (setq bookmark-save-flag t)
 
@@ -12,6 +14,7 @@
 (global-set-key (kbd "M-1") 'bookmark-bmenu-list)
 (global-set-key (kbd "M-2") 'bookmark-set)
 (global-set-key (kbd "M-3") 'bookmark-delete)
+
 
 (provide 'init-bookmarks)
 ;;; init-bookmarks.el ends here

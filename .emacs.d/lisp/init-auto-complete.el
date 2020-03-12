@@ -1,13 +1,16 @@
 ;;; init-auto-complete.el -- Initialize auto complete
 ;;; Commentary:
 ;;; Code:
-(require 'ivy)
-(require 'projectile)
-(require 'company)
-(require 'counsel-projectile)
-(require 'swiper)
-(require 'flx)
-(require 'smex)
+
+(maybe-require-package 'company)
+(maybe-require-package 'counsel)
+(maybe-require-package 'counsel-projectile)
+(maybe-require-package 'flx)
+(maybe-require-package 'smex)
+(maybe-require-package 'swiper)
+(maybe-require-package 'ivy)
+(maybe-require-package 'projectile)
+
 
 (ivy-mode 1)
 (setq projectile-completion-system 'ivy)
@@ -25,6 +28,7 @@
 
 (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (global-set-key [remap execute-extended-command] 'smex)
+
 
 (provide 'init-auto-complete)
 ;;; init-auto-complete.el ends here

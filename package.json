@@ -1,0 +1,11 @@
+{
+  "name": "emacs",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".emacs.d/init.el",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikhail Durmanov",
+  "license": "MIT"
+}

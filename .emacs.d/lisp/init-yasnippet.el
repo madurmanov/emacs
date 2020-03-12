@@ -1,7 +1,10 @@
 ;;; init-yasnippet.el -- Initialize yasippet
 ;;; Commentary:
 ;;; Code:
-(require 'yasnippet)
+
+(maybe-require-package 'yasnippet)
+(maybe-require-package 'auto-yasnippet)
+
 
 (add-to-list 'auto-mode-alist '("\\.yasnippet\\'" . snippet-mode))
 
@@ -11,13 +14,14 @@
 (setq-default mode-require-final-newline nil)
 
 (setq yas-prompt-functions '(yas-dropdown-prompt
-			     yas-ido-prompt
-			     yas-completing-prompt))
+           yas-ido-prompt
+           yas-completing-prompt))
 
 (defadvice yas-insert-snippet (around use-completing-prompt activate)
   "Use `yas-completing-prompt' for `yas-prompt-functions' but only here..."
   (let* ((yas-prompt-functions '(yas-completing-prompt)))
     ad-do-it))
+
 
 (provide 'init-yasnippet)
 ;;; init-yasnippet.el ends here
