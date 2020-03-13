@@ -1,5 +1,6 @@
 auto-save-list/
 elpa/
+transient/
 url/
 ac-comphist.dat
 custom.el

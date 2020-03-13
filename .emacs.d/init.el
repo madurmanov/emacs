@@ -29,8 +29,8 @@
 
 ;; Packages
 (require 'init-auto-complete)
+(require 'init-auto-save-buffer)
 (require 'init-bookmarks)
-(require 'init-buffer-auto-save)
 (require 'init-desktop)
 (require 'init-diminish)
 (require 'init-evil)

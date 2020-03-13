@@ -7,10 +7,10 @@
 
 (defvar m/bookmark-file-name ".emacs.bookmarks")
 
-;; Auto save bookmarks after close
+;; Auto save bookmarks after exit
 (setq bookmark-save-flag t)
 
-;; Load bookmarks at start
+;; Load bookmarks saved before
 (when (file-exists-p (concat "./" m/bookmark-file-name))
   (bookmark-load bookmark-default-file t))
 

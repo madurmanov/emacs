@@ -1,7 +1,8 @@
-;;; init-buffer-auto-save.el -- Initialize buffer auto save
+;;; init-auto-save-buffer.el -- Initialize buffer auto save
 ;;; Commentary:
 ;;; Code:
 
+;; Auto save buffer when focus is lost
 (defadvice switch-to-buffer (before save-buffer-now activate)
   (when buffer-file-name (save-buffer)))
 (defadvice other-window (before other-window-now activate)
@@ -16,8 +17,5 @@
   (when buffer-file-name (save-buffer)))
 
 
-(add-hook 'focus-out-hook (lambda () (when buffer-file-name (save-buffer))))
-
-
-(provide 'init-buffer-auto-save)
-;;; init-buffer-auto-save.el ends here
+(provide 'init-auto-save-buffer)
+;;; init-auto-save-buffer.el ends here
