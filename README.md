@@ -10,6 +10,7 @@
 - [Desktop](#desktop)
 - [Dimnish](#dimnish)
 - [Evil](#evil)
+- [Speedbar](#speedbar)
 
 
 ### Auto save buffer
@@ -32,9 +33,9 @@ If Emacs start directory contain `.emacs.bookmarks` saved before that he will lo
 
 Keybindings:
 ```
-[M-1] - List of bookmarks
-[M-2] - Set bookmark
-[M-3] - Delete bookmark
+[M-1] - list of bookmarks
+[M-2] - set bookmark
+[M-3] - delete bookmark
 ```
 
 
@@ -67,6 +68,22 @@ visualstar search:
 [M-*] - reset highlighted result
 [*] - next result
 [#] - previous result
+```
+
+
+## Speedbar
+
+Use build-in speedbar together with sr-speedbar.
+Speedbar have fixed width size and opens at the left side of the frame.
+
+Keybindings:
+```
+[(] - go to top
+[)] - go to bottom
+[u] - back to the level above
+[o] - expand folder
+[M-)] - refresh speedbar
+[M-0] - toggle speedbar
 ```
 
 
