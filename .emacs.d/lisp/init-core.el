@@ -39,6 +39,7 @@
   inhibit-startup-echo-area-message t
   use-file-dialog nil
   use-dialog-box nil
+  undo-tree-auto-save-history nil
   scroll-margin 0
   scroll-conservatively 100000
   scroll-preserve-screen-position 1
