@@ -21,6 +21,19 @@
 ;; Keybindings
 (global-set-key (kbd "M-*") 'evil-ex-nohighlight)
 
+;; Set keybindings for speedbar
+(with-eval-after-load 'sr-speedbar
+  (evil-add-hjkl-bindings speedbar-mode-map 'motion
+    "h" 'backward-char
+    "j" 'speedbar-next
+    "k" 'speedbar-prev
+    "l" 'forward-char
+    "i" 'speedbar-item-info
+    "r" 'speedbar-refresh
+    "u" 'speedbar-up-directory
+    "o" 'speedbar-toggle-line-expansion
+    (kbd "RET") 'speedbar-edit-line))
+
 
 (provide 'init-evil)
 ;;; init-evil.el ends here
